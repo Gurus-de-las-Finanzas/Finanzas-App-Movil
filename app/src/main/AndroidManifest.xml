@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Finanzas"
         tools:targetApi="31">
         <activity
+            android:name=".clients.controller.activities.AddClientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".clients.controller.activities.ClientsActivity"
+            android:exported="false" />
+        <activity
             android:name=".home.controller.activities.HomeActivity"
             android:exported="false" />
         <activity
