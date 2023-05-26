@@ -76,6 +76,7 @@ class LoginActivity : AppCompatActivity() {
             authenticateResponse.image,
             authenticateResponse.email,
         )
+        StateManager.loggedUserId = authenticateResponse.id
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
     }
