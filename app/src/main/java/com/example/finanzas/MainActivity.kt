@@ -45,7 +45,9 @@ class MainActivity : AppCompatActivity() {
                     response: Response<AuthenticateResponse>
                 ) {
                     if (response.isSuccessful)
+                    {
                         goToHome(response.body()!!)
+                    }
                     else {
                         AppDatabase.getInstance(this@MainActivity).getLoginCredentialsDao().cleanTable()
                         Toast.makeText(this@MainActivity, "Error al iniciar sesión de forma automatica", Toast.LENGTH_SHORT).show()
@@ -76,11 +78,19 @@ class MainActivity : AppCompatActivity() {
         )
         StateManager.loggedUserId = authenticateResponse.id
         val intent = Intent(this, HomeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
+        finish()
     }
 
     private fun goToLoginActivity() {
         val intent = Intent(this, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
+        finish()
     }
 }
