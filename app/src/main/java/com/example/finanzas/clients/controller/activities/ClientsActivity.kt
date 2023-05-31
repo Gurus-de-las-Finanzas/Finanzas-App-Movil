@@ -16,15 +16,17 @@ import com.example.finanzas.clients.adapter.ClientAdapter
 import com.example.finanzas.clients.models.Client
 import com.example.finanzas.clients.network.ClientService
 import com.example.finanzas.home.controller.activities.HomeActivity
+import com.example.finanzas.payments.controller.activities.PaymentFormActivity
 import com.example.finanzas.security.controller.activities.LoginActivity
 import com.example.finanzas.shared.AppDatabase
+import com.example.finanzas.shared.OnItemClickListener
 import com.example.finanzas.shared.SharedMethods
 import com.example.finanzas.shared.StateManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ClientsActivity : AppCompatActivity() {
+class ClientsActivity : AppCompatActivity(), OnItemClickListener<Client> {
     lateinit var recyclerView: RecyclerView
     var clients: List<Client> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,7 +96,7 @@ class ClientsActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     clients = response.body()!!
                     recyclerView.layoutManager = LinearLayoutManager(this@ClientsActivity)
-                    recyclerView.adapter = ClientAdapter(clients, this@ClientsActivity, StateManager.frenchButtonActivated)
+                    recyclerView.adapter = ClientAdapter(clients, this@ClientsActivity, StateManager.frenchButtonActivated, this@ClientsActivity)
                 }
                 else
                     Toast.makeText(this@ClientsActivity, "Error al obtener clientes: ${response.message()}", Toast.LENGTH_SHORT).show()
@@ -105,5 +107,10 @@ class ClientsActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun onItemClicked(value: Client) {
+        val intent = Intent(this, PaymentFormActivity::class.java)
+        startActivity(intent)
     }
 }

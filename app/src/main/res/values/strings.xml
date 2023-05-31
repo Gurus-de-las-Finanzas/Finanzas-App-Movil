@@ -4,4 +4,11 @@
     <string name="password">Contraseña</string>
     <string name="login">Iniciar sesión</string>
     <string name="register">Regístrate</string>
+    <string-array name="lien_types">
+        <item>Individual</item>
+        <item>Mancomunado</item>
+        <item>Endosado</item>
+        <item>Individual con retorno</item>
+        <item>Mancomunado con retorno</item>
+    </string-array>
 </resources>

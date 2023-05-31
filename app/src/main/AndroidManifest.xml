@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Finanzas"
         tools:targetApi="31">
         <activity
+            android:name=".payments.controller.activities.PaymentFormActivity"
+            android:exported="false" />
+        <activity
             android:name=".clients.controller.activities.AddClientActivity"
             android:exported="false" />
         <activity
