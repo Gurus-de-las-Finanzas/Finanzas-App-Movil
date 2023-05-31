@@ -7,4 +7,6 @@ object StateManager {
     var loggedUserId: Int = -1
     lateinit var loggedUser: User
     var password: String = ""
+    var frenchButtonActivated: Boolean = false
+    var addClientButtonActivated: Boolean = false
 }

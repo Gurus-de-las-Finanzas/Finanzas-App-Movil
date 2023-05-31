@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,7 +23,6 @@ import com.example.finanzas.shared.StateManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
 class ClientsActivity : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
@@ -33,7 +33,9 @@ class ClientsActivity : AppCompatActivity() {
         val btnAddClient = findViewById<ImageButton>(R.id.btnAddClient)
         recyclerView = findViewById(R.id.rvClients)
         loadClients()
-        btnAddClient.setOnClickListener {
+        if (!StateManager.addClientButtonActivated)
+            btnAddClient.visibility = View.INVISIBLE
+        else btnAddClient.setOnClickListener {
             goToAddClientActivity()
         }
     }
@@ -92,7 +94,7 @@ class ClientsActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     clients = response.body()!!
                     recyclerView.layoutManager = LinearLayoutManager(this@ClientsActivity)
-                    recyclerView.adapter = ClientAdapter(clients, this@ClientsActivity)
+                    recyclerView.adapter = ClientAdapter(clients, this@ClientsActivity, StateManager.frenchButtonActivated)
                 }
                 else
                     Toast.makeText(this@ClientsActivity, "Error al obtener clientes: ${response.message()}", Toast.LENGTH_SHORT).show()

@@ -4,20 +4,24 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finanzas.R
 import com.example.finanzas.clients.models.Client
 
-class ClientAdapter(private val clients: List<Client>, private val context: Context)
+class ClientAdapter(private val clients: List<Client>, private val context: Context, private val buttonActivated: Boolean)
     :RecyclerView.Adapter<ClientAdapter.Prototype>(){
     class Prototype(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val tvClientName = itemView.findViewById<TextView>(R.id.tvClientName)
         private val tvClientDNI = itemView.findViewById<TextView>(R.id.tvClientDNI)
+        private val btnGoFrench = itemView.findViewById<ImageButton>(R.id.btnGoFrench)
 
-        fun bind(client: Client) {
+        fun bind(client: Client, buttonActivated: Boolean) {
             tvClientName.text = "${client.name} ${client.lastName}"
             tvClientDNI.text = "DNI: ${client.dni}"
+            if (!buttonActivated)
+                btnGoFrench.visibility = View.INVISIBLE
         }
     }
 
@@ -29,7 +33,7 @@ class ClientAdapter(private val clients: List<Client>, private val context: Cont
     }
 
     override fun onBindViewHolder(holder: ClientAdapter.Prototype, position: Int) {
-        holder.bind(clients[position])
+        holder.bind(clients[position], buttonActivated)
     }
 
     override fun getItemCount(): Int {
