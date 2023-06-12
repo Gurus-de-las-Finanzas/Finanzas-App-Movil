@@ -3,9 +3,6 @@ package com.example.finanzas.home.controller.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import com.example.finanzas.R
@@ -13,6 +10,7 @@ import com.example.finanzas.clients.controller.activities.ClientsActivity
 import com.example.finanzas.security.controller.activities.LoginActivity
 import com.example.finanzas.shared.AppDatabase
 import com.example.finanzas.shared.StateManager
+import com.example.finanzas.vantir.controller.activities.VanTirFormActivity
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,15 +18,24 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         val btnForm = findViewById<Button>(R.id.btnForm)
         val btnClients = findViewById<Button>(R.id.btnClients)
+        val btnVanTir = findViewById<Button>(R.id.btnVanTir)
         btnClients.setOnClickListener {
             goToClientsActivity()
         }
         btnForm.setOnClickListener {
-            goToSelectClientForFormActivity()
+            goToSelectClientFormActivity()
+        }
+        btnVanTir.setOnClickListener {
+            goToVanTirFormActivity()
         }
     }
 
-    private fun goToSelectClientForFormActivity() {
+    private fun goToVanTirFormActivity() {
+        val intent = Intent(this, VanTirFormActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToSelectClientFormActivity() {
         val intent = Intent(this, ClientsActivity::class.java)
         startActivity(intent)
         StateManager.addClientButtonActivated = false

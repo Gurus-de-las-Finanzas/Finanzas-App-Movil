@@ -62,4 +62,7 @@ dependencies {
 
     //Apache commons validator
     implementation 'commons-validator:commons-validator:1.7'
+
+    //FastTableLayout
+    implementation 'com.github.alcarazolabs:FastTableLayout:1.0.0'
 }

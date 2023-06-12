@@ -15,6 +15,18 @@
         android:theme="@style/Theme.Finanzas"
         tools:targetApi="31">
         <activity
+            android:name=".vantir.controller.activities.VanTirResultsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".vantir.controller.activities.NetFlowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".vantir.controller.activities.VanTirFormActivity"
+            android:exported="false" />
+        <activity
+            android:name=".payments.controller.activities.PaymentPlanActivity"
+            android:exported="false" />
+        <activity
             android:name=".payments.controller.activities.PaymentFormActivity"
             android:exported="false" />
         <activity

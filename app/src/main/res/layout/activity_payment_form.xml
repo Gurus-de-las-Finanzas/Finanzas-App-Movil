@@ -12,8 +12,10 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -45,6 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="60dp"
                     android:layout_marginTop="20dp"
+                    android:onClick="onRadioButtonClicked"
                     android:text="Soles" />
 
                 <RadioButton
@@ -53,6 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="60dp"
+                    android:onClick="onRadioButtonClicked"
                     android:text="Dólares" />
             </RadioGroup>
 
@@ -85,6 +89,7 @@
                     android:id="@+id/rbtnConstruction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
                     android:text="Construcción" />
 
                 <RadioButton
@@ -172,6 +177,7 @@
                     android:id="@+id/rbtnNominal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
                     android:text="Nominal" />
 
                 <RadioButton
@@ -179,6 +185,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onRadioButtonClicked"
                     android:text="Efectiva" />
 
             </RadioGroup>
@@ -209,10 +216,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:text="5 años"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/seekBarTermYears"
-                tools:text="5 años" />
+                app:layout_constraintTop_toBottomOf="@+id/seekBarTermYears" />
 
             <TextView
                 android:id="@+id/tvLienType"
@@ -260,6 +267,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onRadioButtonClicked"
                     android:text="Total" />
 
                 <RadioButton
@@ -271,14 +279,44 @@
             </RadioGroup>
 
             <Button
-                android:id="@+id/btnGenerateForm"
+                android:id="@+id/btnGeneratePlan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="Generar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSelectedGraceMonths" />
+
+            <TextView
+                android:id="@+id/tvGraceMonths"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:text="Meses de gracia"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rgGracePeriod" />
+
+            <SeekBar
+                android:id="@+id/seekBarGraceMonths"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:max="6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvGraceMonths" />
+
+            <TextView
+                android:id="@+id/tvSelectedGraceMonths"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="0 meses"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seekBarGraceMonths" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

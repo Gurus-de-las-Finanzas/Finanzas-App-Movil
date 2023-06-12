@@ -110,6 +110,7 @@ class ClientsActivity : AppCompatActivity(), OnItemClickListener<Client> {
     }
 
     override fun onItemClicked(value: Client) {
+        StateManager.selectedClient = value
         val intent = Intent(this, PaymentFormActivity::class.java)
         startActivity(intent)
     }
