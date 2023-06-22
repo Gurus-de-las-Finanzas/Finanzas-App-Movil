@@ -8,10 +8,9 @@
 
     <Button
         android:id="@+id/btnLogout"
+        style="@style/Theme.Finanzas.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="129dp"
-        android:layout_marginEnd="129dp"
         android:layout_marginBottom="103dp"
         android:onClick="logOut"
         android:text="Cerrar sesión"
@@ -21,11 +20,10 @@
 
     <Button
         android:id="@+id/btnClients"
+        style="@style/Theme.Finanzas.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
         android:layout_marginTop="166dp"
-        android:layout_marginEnd="149dp"
         android:text="Clientes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,11 +31,10 @@
 
     <Button
         android:id="@+id/btnForm"
+        style="@style/Theme.Finanzas.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="77dp"
         android:text="Formulario plan de pagos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,11 +42,10 @@
 
     <Button
         android:id="@+id/btnVanTir"
+        style="@style/Theme.Finanzas.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="114dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="114dp"
         android:text="Cálculo VAN y TIR"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

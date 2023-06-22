@@ -11,4 +11,9 @@
         <item>Individual con retorno</item>
         <item>Mancomunado con retorno</item>
     </string-array>
+
+    <string name="not_fill">Todos los parametros no están llenos</string>
+    <string name="van">VAN: $1</string>
+    <string name="tir">TIR: $1</string>
+
 </resources>

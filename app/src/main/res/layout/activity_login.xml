@@ -11,31 +11,31 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="300dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35" />
 
     <EditText
         android:id="@+id/etLoginPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etLoginEmail"
+        app:layout_constraintStart_toStartOf="@+id/etLoginEmail"
         app:layout_constraintTop_toBottomOf="@+id/etLoginEmail" />
 
     <Button
         android:id="@+id/btnLogin"
+        style="@style/Theme.Finanzas.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
@@ -49,6 +49,7 @@
 
     <Button
         android:id="@+id/btnRegister"
+        style="@style/Theme.Finanzas.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="138dp"

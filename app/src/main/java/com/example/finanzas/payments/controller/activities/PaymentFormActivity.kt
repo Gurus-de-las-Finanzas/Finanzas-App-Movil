@@ -105,8 +105,8 @@ class PaymentFormActivity : AppCompatActivity() {
         val propertyPrice = etPropertyPrice.text.toString().toDouble()
         val loan = propertyPrice * (1 - initialFee)
         var fee = 0.0
-        //val periodQuantity = term * 12
-        val periodQuantity = 8
+        val periodQuantity = term * 12
+        //val periodQuantity = 8
         val hasGraceMonths = graceMonths > 0
         var rate = 0.0
         when(selectedRate) {
@@ -150,7 +150,7 @@ class PaymentFormActivity : AppCompatActivity() {
             periods.add(SavePeriodResource(i + 1, initialBalance, interest, amortization, finalFee, finalBalance))
         }
         StateManager.generatedPaymentPlan =
-            SavePaymentPlanResource(coin, periodQuantity, selectedRate, rate, propertyPrice, StateManager.selectedClient.id, periods, graceMonths, initialFee, gracePeriod, loan)
+            SavePaymentPlanResource(coin, periodQuantity, selectedRate, rate, propertyPrice, periods, graceMonths, initialFee, gracePeriod, loan, StateManager.selectedClient.id)
     }
 
     private fun enableLienTypeSpinner() {

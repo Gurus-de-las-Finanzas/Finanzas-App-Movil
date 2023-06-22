@@ -18,9 +18,10 @@
 
     <Button
         android:id="@+id/btnGenVanTir"
+        style="@style/Theme.Finanzas.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="16dp"
         android:text="Generar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -13,6 +13,7 @@ import com.example.finanzas.home.controller.activities.HomeActivity
 import com.example.finanzas.security.controller.activities.LoginActivity
 import com.example.finanzas.shared.AppDatabase
 import com.example.finanzas.shared.StateManager
+import com.example.finanzas.vantir.models.VanData
 
 class VanTirFormActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,9 +26,17 @@ class VanTirFormActivity : AppCompatActivity() {
     }
 
     private fun goToNetFlowActivity() {
+        val etInversion = findViewById<EditText>(R.id.etInversion)
+        val inversion = etInversion.text.toString().toDouble()
+
         val etVanYears = findViewById<EditText>(R.id.etVanYears)
         val n = etVanYears.text.toString().toInt()
-        StateManager.netFlowQuantity = n
+
+        val etOpportunityCost = findViewById<EditText>(R.id.etOpportunityCost)
+        val opportunityCost = etOpportunityCost.text.toString().toDouble()
+
+        StateManager.vanData = VanData(inversion, n, opportunityCost)
+
         val intent = Intent(this, NetFlowActivity::class.java)
         startActivity(intent)
     }

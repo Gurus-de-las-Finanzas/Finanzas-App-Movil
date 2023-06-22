@@ -65,4 +65,8 @@ dependencies {
 
     //FastTableLayout
     implementation 'com.github.alcarazolabs:FastTableLayout:1.0.0'
+
+    //TIR
+    implementation 'org.apache.poi:poi:3.9'
+
 }

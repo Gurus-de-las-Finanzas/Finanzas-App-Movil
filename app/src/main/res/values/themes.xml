@@ -12,5 +12,33 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:textViewStyle">@style/Theme.Finanzas.TextView</item>
+        <item name="radioButtonStyle">@style/Theme.Finanzas.RadioButton</item>
+        <item name="android:editTextStyle">@style/Theme.Finanzas.EditText</item>
+        <item name="editTextStyle">@style/Theme.Finanzas.EditText</item>
+        <item name="buttonStyle">@style/Theme.Finanzas.Button</item>
+        <item name="android:buttonStyle">@style/Theme.Finanzas.Button</item>
+
     </style>
+
+    <style name="Theme.Finanzas.TextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.Finanzas.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Theme.Finanzas.Button" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <style name="Theme.Finanzas.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/bg_edit_text</item>
+        <item name="android:padding">8dp</item>
+
+    </style>
+
 </resources>
