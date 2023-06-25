@@ -8,7 +8,6 @@
 
     <Button
         android:id="@+id/btnLogout"
-        style="@style/Theme.Finanzas.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="103dp"
@@ -20,7 +19,6 @@
 
     <Button
         android:id="@+id/btnClients"
-        style="@style/Theme.Finanzas.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="166dp"
@@ -31,7 +29,6 @@
 
     <Button
         android:id="@+id/btnForm"
-        style="@style/Theme.Finanzas.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -42,7 +39,6 @@
 
     <Button
         android:id="@+id/btnVanTir"
-        style="@style/Theme.Finanzas.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"

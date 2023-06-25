@@ -15,6 +15,7 @@ import com.example.finanzas.security.models.LoginCredentials
 import com.example.finanzas.security.models.User
 import com.example.finanzas.security.network.UserService
 import com.example.finanzas.shared.AppDatabase
+import com.example.finanzas.shared.AppPreferences.Companion.preferences
 import com.example.finanzas.shared.SharedMethods
 import com.example.finanzas.shared.StateManager
 import retrofit2.*
@@ -69,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun goToHome(authenticateResponse: AuthenticateResponse) {
         StateManager.authToken = "Bearer ${authenticateResponse.token}"
+        preferences.saveToken(authenticateResponse.token)
         StateManager.loggedUser = User(
             authenticateResponse.id,
             authenticateResponse.name,

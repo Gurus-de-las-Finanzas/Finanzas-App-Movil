@@ -16,4 +16,14 @@
     <string name="van">VAN: $1</string>
     <string name="tir">TIR: $1</string>
 
+    <string-array name="plan_headers">
+        <item>Mes</item>
+        <item>Saldo inicial</item>
+        <item>Interés</item>
+        <item>Seguro de desgramen</item>
+        <item>Cuota</item>
+        <item>Amortización</item>
+        <item>Saldo final</item>
+    </string-array>
+
 </resources>

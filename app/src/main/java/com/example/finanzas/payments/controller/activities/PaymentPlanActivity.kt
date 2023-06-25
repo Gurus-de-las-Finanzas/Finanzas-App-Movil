@@ -1,33 +1,43 @@
 package com.example.finanzas.payments.controller.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.TableLayout
+import android.widget.TableRow
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.alclabs.fasttablelayout.FastTableLayout
 import com.example.finanzas.R
 import com.example.finanzas.clients.adapter.ClientAdapter
 import com.example.finanzas.clients.models.Client
+import com.example.finanzas.databinding.ActivityPaymentPlanBinding
 import com.example.finanzas.home.controller.activities.HomeActivity
 import com.example.finanzas.security.controller.activities.LoginActivity
 import com.example.finanzas.shared.AppDatabase
+import com.example.finanzas.shared.ExtensionMethods.isEven
+import com.example.finanzas.shared.ExtensionMethods.round
+import com.example.finanzas.shared.ExtensionMethods.toDP
 import com.example.finanzas.shared.OnItemClickListener
 import com.example.finanzas.shared.StateManager
 
 class PaymentPlanActivity : AppCompatActivity() {
     lateinit var tableLayPaymentPlan: TableLayout
     lateinit var recyclerView: RecyclerView
+    private lateinit var binding: ActivityPaymentPlanBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_payment_plan)
-        tableLayPaymentPlan = findViewById(R.id.tableLayPaymentPlan)
-        recyclerView = findViewById(R.id.rvClientOwner)
+        binding = ActivityPaymentPlanBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        tableLayPaymentPlan = binding.tableLayPaymentPlan
+        recyclerView = binding.rvClientOwner
         loadOwner()
         loadTable()
         showDataOnTexts()
@@ -41,6 +51,53 @@ class PaymentPlanActivity : AppCompatActivity() {
 
             }
         })
+    }
+
+    private fun addRow(rows: Array<String>, evenRow: Boolean,
+                       areHeader: Boolean = false, hasGracePeriod: Boolean = false) {
+        val tableRow = TableRow(this)
+
+        rows.forEachIndexed { index, s ->
+            val textView = TextView(this)
+
+            textView.apply {
+                text = s
+                gravity = Gravity.CENTER
+                background = AppCompatResources.getDrawable(this@PaymentPlanActivity, R.drawable.bg_table_column)
+            }
+            tableRow.addView(textView)
+
+            var dp = 5.toDP(this@PaymentPlanActivity)
+            if(areHeader){
+                dp = 10.toDP(this@PaymentPlanActivity)
+                tableRow.setBackgroundColor(getColor(R.color.purple_500))
+                textView.setTextColor(Color.WHITE)
+                textView.setTypeface(null, Typeface.BOLD)
+            }
+            else {
+                textView.setTextColor(getColor(R.color.number_row))
+                if (index == 2)
+                    textView.setTextColor(getColor(R.color.interest))
+                if (index == 5)
+                    textView.setTextColor(Color.RED)
+
+                if(s.toDoubleOrNull() == 0.0 && index == 6)
+                    textView.setBackgroundColor(Color.GREEN)
+
+                if(hasGracePeriod) {
+                    if(index in 4 .. 5)
+                        textView.setTextColor(getColor(R.color.purple_200))
+                }
+            }
+
+            textView.setPadding(dp, 0, dp, 0)
+
+        }
+
+        if (evenRow)
+            tableRow.setBackgroundColor(getColor(R.color.even_row))
+
+        tableLayPaymentPlan.addView(tableRow)
     }
 
     private fun showDataOnTexts() {
@@ -72,37 +129,18 @@ class PaymentPlanActivity : AppCompatActivity() {
     }
 
     private fun loadTable() {
-        val headers = arrayOf(
-            "Nro",
-            "Saldo inicial",
-            "Interés",
-            "Seguro degr.",
-            "Cuota",
-            "Amortización",
-            "Saldo final")
-
-        val periods = StateManager.generatedPaymentPlan.periods
-
-        var data = Array<Array<String>>(periods.size) { arrayOf() }
-        
-        periods.forEachIndexed { index, item ->
-            data[index] = arrayOf(
+        addRow(resources.getStringArray(R.array.plan_headers), evenRow = false, areHeader = true)
+        StateManager.generatedPaymentPlan.periods.forEachIndexed  { index, item ->
+            addRow(arrayOf(
                 item.numberPeriod.toString(),
-                item.initialBalance.toString(),
-                item.interest.toString(),
+                item.initialBalance.round(2).toString(),
+                item.interest.round(2).toString(),
                 "",
-                item.fee.toString(),
-                item.amortization.toString(),
-                item.finalBalance.toString()
-            )
+                item.fee.round(2).toString(),
+                item.amortization.round(2).toString(),
+                item.finalBalance.round(2).toString()
+            ), index.isEven(), hasGracePeriod = item.amortization == 0.0)
         }
-
-        val fastTable = FastTableLayout(this, tableLayPaymentPlan, headers, data)
-
-        fastTable.SET_DEAFULT_HEADER_BORDER = true
-        fastTable.setCustomBackgroundToHeaders(com.alclabs.fasttablelayout.R.color.purple_500)
-
-        fastTable.build()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

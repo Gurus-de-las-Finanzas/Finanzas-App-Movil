@@ -83,6 +83,7 @@
                     android:id="@+id/rbtnMortgage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
                     android:text="Crédito hipotecario" />
 
                 <RadioButton
@@ -96,6 +97,7 @@
                     android:id="@+id/rbtnImprovements"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
                     android:text="Mejoras o ampliaciones" />
 
             </RadioGroup>
@@ -275,12 +277,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onRadioButtonClicked"
                     android:text="Parcial" />
             </RadioGroup>
 
             <Button
                 android:id="@+id/btnGeneratePlan"
-                style="@style/Theme.Finanzas.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"

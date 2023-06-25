@@ -1,15 +1,14 @@
 package com.example.finanzas.clients.controller.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Process
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.finanzas.R
 import com.example.finanzas.clients.models.Client
 import com.example.finanzas.clients.models.SaveClientResource
@@ -22,7 +21,6 @@ import com.example.finanzas.shared.StateManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
 class AddClientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,7 +74,7 @@ class AddClientActivity : AppCompatActivity() {
             etClientDNI.text.isNotBlank() && etClientDNI.length() == 8) {
             val retrofit = SharedMethods.retrofitBuilder()
             val clientService = retrofit.create(ClientService::class.java)
-            val request = clientService.saveClient(StateManager.authToken,
+            val request = clientService.saveClient(StateManager.authToken!!,
                 SaveClientResource(
                     etClientName.text.toString(),
                     etClientLastName.text.toString(),

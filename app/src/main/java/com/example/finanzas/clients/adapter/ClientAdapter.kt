@@ -1,17 +1,14 @@
 package com.example.finanzas.clients.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finanzas.R
 import com.example.finanzas.clients.models.Client
-import com.example.finanzas.payments.controller.activities.PaymentFormActivity
 import com.example.finanzas.shared.OnItemClickListener
 
 class ClientAdapter(private val clients: List<Client>, private val context: Context, private val buttonActivated: Boolean, private val onItemClickListener: OnItemClickListener<Client>)

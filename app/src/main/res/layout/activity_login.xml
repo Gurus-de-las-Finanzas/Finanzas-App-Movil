@@ -35,7 +35,6 @@
 
     <Button
         android:id="@+id/btnLogin"
-        style="@style/Theme.Finanzas.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
@@ -49,7 +48,6 @@
 
     <Button
         android:id="@+id/btnRegister"
-        style="@style/Theme.Finanzas.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="138dp"

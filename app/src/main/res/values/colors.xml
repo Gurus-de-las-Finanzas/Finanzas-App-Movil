@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="even_row">#9488F8E7</color>
+    <color name="interest">#6698FA</color>
+    <color name="number_row">#9C000000</color>
 </resources>

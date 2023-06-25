@@ -19,6 +19,7 @@ import com.example.finanzas.home.controller.activities.HomeActivity
 import com.example.finanzas.payments.controller.activities.PaymentFormActivity
 import com.example.finanzas.security.controller.activities.LoginActivity
 import com.example.finanzas.shared.AppDatabase
+import com.example.finanzas.shared.AppPreferences.Companion.preferences
 import com.example.finanzas.shared.OnItemClickListener
 import com.example.finanzas.shared.SharedMethods
 import com.example.finanzas.shared.StateManager
@@ -85,12 +86,11 @@ class ClientsActivity : AppCompatActivity(), OnItemClickListener<Client> {
     }
 
     private fun loadClients() {
-        val token = StateManager.authToken
+        val token = preferences.getToken()
         val retrofit = SharedMethods.retrofitBuilder()
 
         val clientService = retrofit.create(ClientService::class.java)
         val request = clientService.getClientsByUserId(token, StateManager.loggedUserId)
-
         request.enqueue(object : Callback<List<Client>> {
             override fun onResponse(call: Call<List<Client>>, response: Response<List<Client>>) {
                 if (response.isSuccessful) {

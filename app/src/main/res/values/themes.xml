@@ -18,6 +18,7 @@
         <item name="editTextStyle">@style/Theme.Finanzas.EditText</item>
         <item name="buttonStyle">@style/Theme.Finanzas.Button</item>
         <item name="android:buttonStyle">@style/Theme.Finanzas.Button</item>
+        <item name="materialButtonStyle">@style/Theme.Finanzas.Button</item>
 
     </style>
 

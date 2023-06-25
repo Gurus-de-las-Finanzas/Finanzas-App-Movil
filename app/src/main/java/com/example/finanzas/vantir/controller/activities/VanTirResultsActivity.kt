@@ -11,8 +11,8 @@ import com.example.finanzas.R
 import com.example.finanzas.home.controller.activities.HomeActivity
 import com.example.finanzas.security.controller.activities.LoginActivity
 import com.example.finanzas.shared.AppDatabase
-import com.example.finanzas.shared.SharedMethods.round
-import com.example.finanzas.shared.SharedMethods.toPercentage
+import com.example.finanzas.shared.ExtensionMethods.round
+import com.example.finanzas.shared.ExtensionMethods.toPercentage
 import com.example.finanzas.shared.StateManager
 
 class VanTirResultsActivity : AppCompatActivity() {
@@ -61,6 +61,6 @@ class VanTirResultsActivity : AppCompatActivity() {
         tvVan.text = getString(R.string.van)
             .replace("$1", StateManager.vanResult.toString())
         tvTir.text = getString(R.string.tir)
-            .replace("$1", if(StateManager.tirResult.isNaN()) "incalculable" else "${round(toPercentage(StateManager.tirResult), 2)}%")
+            .replace("$1", if(StateManager.tirResult.isNaN()) "incalculable" else "${StateManager.tirResult.toPercentage().round(2)}%")
     }
 }
