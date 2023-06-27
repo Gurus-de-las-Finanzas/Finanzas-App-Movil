@@ -24,7 +24,9 @@
                 android:layout_height="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" >
+
+            </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/tvModality"
@@ -36,23 +38,32 @@
                 app:layout_constraintTop_toBottomOf="@+id/rvClientOwner"
                 tools:text="Modalidad:" />
 
+            <ImageButton
+                android:id="@+id/ibSavePlan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tvModality"
+                app:layout_constraintTop_toBottomOf="@+id/rvClientOwner"
+                app:srcCompat="@drawable/ic_save" />
+
             <TextView
                 android:id="@+id/tvRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvModality"
+                android:layout_marginTop="@dimen/tv_top_bottom"
+                app:layout_constraintStart_toStartOf="@+id/tvModality"
+                app:layout_constraintTop_toBottomOf="@+id/tvCoinType"
                 tools:text="Tasa de interés:" />
 
             <TextView
                 android:id="@+id/tvPropertyCost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/tv_top_bottom"
+                app:layout_constraintStart_toStartOf="@+id/tvRate"
                 app:layout_constraintTop_toBottomOf="@+id/tvRate"
                 tools:text="Costo de inmueble:" />
 
@@ -60,9 +71,8 @@
                 android:id="@+id/tvInitialFee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/tv_top_bottom"
+                app:layout_constraintStart_toStartOf="@+id/tvPlanLoan"
                 app:layout_constraintTop_toBottomOf="@+id/tvPlanLoan"
                 tools:text="Cuota inicial:" />
 
@@ -70,9 +80,8 @@
                 android:id="@+id/tvTerm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/tv_top_bottom"
+                app:layout_constraintStart_toStartOf="@+id/tvInitialFee"
                 app:layout_constraintTop_toBottomOf="@+id/tvInitialFee"
                 tools:text="Plazo (años):" />
 
@@ -80,9 +89,8 @@
                 android:id="@+id/tvGracePeriodShow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/tv_top_bottom"
+                app:layout_constraintStart_toStartOf="@+id/tvTerm"
                 app:layout_constraintTop_toBottomOf="@+id/tvTerm"
                 tools:text="Periodo de gracia:" />
 
@@ -90,9 +98,8 @@
                 android:id="@+id/tvMiViviendaSostenible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/tv_top_bottom"
+                app:layout_constraintStart_toStartOf="@+id/tvGracePeriodShow"
                 app:layout_constraintTop_toBottomOf="@+id/tvGracePeriodShow"
                 tools:text="Bono Mi Vivienda Sostenible:" />
 
@@ -100,9 +107,8 @@
                 android:id="@+id/tvGoodPayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/tv_top_bottom"
+                app:layout_constraintStart_toStartOf="@+id/tvMiViviendaSostenible"
                 app:layout_constraintTop_toBottomOf="@+id/tvMiViviendaSostenible"
                 tools:text="Bono buen pagador:" />
 
@@ -110,9 +116,8 @@
                 android:id="@+id/tvAnnualEffectiveRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/tv_top_bottom"
+                app:layout_constraintStart_toStartOf="@+id/tvGoodPayer"
                 app:layout_constraintTop_toBottomOf="@+id/tvGoodPayer"
                 tools:text="Tasa efectiva anual:" />
 
@@ -120,11 +125,19 @@
                 android:id="@+id/tvGraceMonthsShow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/tv_top_bottom"
+                app:layout_constraintStart_toStartOf="@+id/tvAnnualEffectiveRate"
                 app:layout_constraintTop_toBottomOf="@+id/tvAnnualEffectiveRate"
                 tools:text="Meses de gracia" />
+
+            <TextView
+                android:id="@+id/tvCoinType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tv_top_bottom"
+                android:text="Moneda: "
+                app:layout_constraintStart_toStartOf="@+id/tvModality"
+                app:layout_constraintTop_toBottomOf="@+id/tvModality" />
 
             <HorizontalScrollView
                 android:layout_width="wrap_content"
@@ -151,9 +164,8 @@
                 android:id="@+id/tvPlanLoan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/tv_top_bottom"
+                app:layout_constraintStart_toStartOf="@+id/tvPropertyCost"
                 app:layout_constraintTop_toBottomOf="@+id/tvPropertyCost"
                 tools:text="Préstamo:" />
 

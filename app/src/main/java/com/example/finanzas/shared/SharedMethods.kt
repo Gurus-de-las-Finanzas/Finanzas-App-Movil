@@ -14,7 +14,7 @@ object SharedMethods {
     }
     fun retrofitBuilder(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://apifinanzasbeta.azurewebsites.net/")
+            .baseUrl("https://guru-finanzas.azurewebsites.net/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

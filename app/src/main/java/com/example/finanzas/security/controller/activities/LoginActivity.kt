@@ -70,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun goToHome(authenticateResponse: AuthenticateResponse) {
         StateManager.authToken = "Bearer ${authenticateResponse.token}"
-        preferences.saveToken(authenticateResponse.token)
+        preferences.saveToken("Bearer ${authenticateResponse.token}")
         StateManager.loggedUser = User(
             authenticateResponse.id,
             authenticateResponse.name,

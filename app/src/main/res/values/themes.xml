@@ -19,6 +19,8 @@
         <item name="buttonStyle">@style/Theme.Finanzas.Button</item>
         <item name="android:buttonStyle">@style/Theme.Finanzas.Button</item>
         <item name="materialButtonStyle">@style/Theme.Finanzas.Button</item>
+        <item name="imageButtonStyle">@style/Theme.Finanzas.ImageButton</item>
+        <item name="android:imageButtonStyle">@style/Theme.Finanzas.ImageButton</item>
 
     </style>
 
@@ -39,7 +41,10 @@
         <item name="android:textSize">14sp</item>
         <item name="android:background">@drawable/bg_edit_text</item>
         <item name="android:padding">8dp</item>
+    </style>
 
+    <style name="Theme.Finanzas.ImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="backgroundTint">@color/white</item>
     </style>
 
 </resources>

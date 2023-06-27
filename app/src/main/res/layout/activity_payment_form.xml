@@ -48,6 +48,7 @@
                     android:layout_marginStart="60dp"
                     android:layout_marginTop="20dp"
                     android:onClick="onRadioButtonClicked"
+                    android:checked="true"
                     android:text="Soles" />
 
                 <RadioButton
@@ -188,6 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="onRadioButtonClicked"
+                    android:checked="true"
                     android:text="Efectiva" />
 
             </RadioGroup>

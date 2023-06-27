@@ -1,4 +1,4 @@
-package com.example.finanzas.shared.enums
+package com.example.finanzas.payments.enums
 
 enum class Coin {
     SOLES,

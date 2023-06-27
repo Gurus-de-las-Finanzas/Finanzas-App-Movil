@@ -1,6 +1,8 @@
 package com.example.finanzas.payments.models
 
-data class SavePeriodResource(
+data class Period(
+    var id: Int,
+    var schedule: PaymentPlan,
     var numberPeriod: Int,
     var initialBalance: Double,
     var interest: Double,
@@ -8,6 +10,5 @@ data class SavePeriodResource(
     var propertyInsurance: Double,
     var amortization: Double,
     var fee: Double,
-    var finalBalance: Double,
-    var scheduleId: Int
+    var finalBalance: Double
 )

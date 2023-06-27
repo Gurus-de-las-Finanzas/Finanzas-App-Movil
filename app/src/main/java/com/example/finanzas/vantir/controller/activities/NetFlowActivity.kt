@@ -1,26 +1,22 @@
 package com.example.finanzas.vantir.controller.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Button
-import androidx.core.text.isDigitsOnly
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finanzas.R
 import com.example.finanzas.home.controller.activities.HomeActivity
 import com.example.finanzas.security.controller.activities.LoginActivity
 import com.example.finanzas.shared.AppDatabase
-import com.example.finanzas.shared.SharedMethods
-import com.example.finanzas.shared.SharedMethods.showShortToast
 import com.example.finanzas.shared.StateManager
 import com.example.finanzas.vantir.adapter.NetFlowAdapter
 import com.example.finanzas.vantir.interfaces.OnTextChangedListener
 import com.example.finanzas.vantir.models.VanData
-import org.apache.poi.ss.formula.functions.Irr
 import org.apache.poi.ss.formula.functions.Irr.irr
 import kotlin.math.pow
 
@@ -98,6 +94,7 @@ class NetFlowActivity : AppCompatActivity() {
         calculateTir()
         val intent = Intent(this, VanTirResultsActivity::class.java)
         startActivity(intent)
+
     }
 
     private fun loadRecyclerView() {

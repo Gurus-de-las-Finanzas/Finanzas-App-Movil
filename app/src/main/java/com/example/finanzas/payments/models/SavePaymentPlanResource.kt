@@ -2,14 +2,19 @@ package com.example.finanzas.payments.models
 
 data class SavePaymentPlanResource(
     var coin: Char,
-    var periodQuantity: Int,
-    var rateType: String,
-    var rate: Double,
+    var periods: Int,
+    var typeRate: Char,
+    var interestRate: Double,
     var propertyCost: Double,
-    var periods: List<SavePeriodResource>,
-    var graceMonths: Int,
-    var initialFee: Double,
-    var gracePeriod: Char,
+    var graceMonths: Int?,
+    var initialFeePercent: Double,
+    var gracePeriod: Char?,
     var loan: Double,
+    var goodPayerBonus: Double?,
+    var miViviendaBonus: Double?,
+    var modality: String,
+    var name: String,
+    var date: String,
+    var typePeriod: String,
     var clientId: Int
 )

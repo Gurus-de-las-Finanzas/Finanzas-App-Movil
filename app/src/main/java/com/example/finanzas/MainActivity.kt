@@ -1,15 +1,13 @@
 package com.example.finanzas
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.finanzas.home.controller.activities.HomeActivity
 import com.example.finanzas.security.controller.activities.LoginActivity
 import com.example.finanzas.security.models.AuthenticateRequest
 import com.example.finanzas.security.models.AuthenticateResponse
-import com.example.finanzas.security.models.LoginCredentials
 import com.example.finanzas.security.models.User
 import com.example.finanzas.security.network.UserService
 import com.example.finanzas.shared.AppDatabase
@@ -18,8 +16,6 @@ import com.example.finanzas.shared.StateManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
-import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 

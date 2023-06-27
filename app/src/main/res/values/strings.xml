@@ -26,4 +26,21 @@
         <item>Saldo final</item>
     </string-array>
 
+    <string name="modality">Modalidad: %s</string>
+    <string name="rate">Tasa de interés: %s %.2f</string>
+    <string name="property_cost">Costo de inmueble: %.2f</string>
+    <string name="loan">Préstamo: %.2f</string>
+    <string name="initial_fee">Cuota inicial: %.2f</string>
+    <string name="terms">Plazo (años): %d</string>
+    <string name="grace_period">Periodo de gracia: %s</string>
+    <string name="sustainable_bonus">Bono mi vivienda sostenible: %.2f</string>
+    <string name="good_payer_bonus">Bono buen pagador: %.2f</string>
+    <string name="grace_moths">Meses de gracia: %d</string>
+    <string name="rate_effective">Tasa efectiva anual: %.2f</string>
+    <string name="save">Guardar</string>
+    <string name="delete">Borrar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save_plan">¿Seguro que quieres guardar este plan de pagos para %s?</string>
+    <string name="delete_plan">¿Seguro que quieres eliminar este plan de pagos para %s?</string>
+    <string name="coin">Moneda: %s</string>
 </resources>

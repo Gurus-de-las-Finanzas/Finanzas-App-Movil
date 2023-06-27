@@ -2,6 +2,7 @@ package com.example.finanzas.shared
 
 import com.example.finanzas.clients.models.Client
 import com.example.finanzas.payments.models.SavePaymentPlanResource
+import com.example.finanzas.payments.models.SavePeriodResource
 import com.example.finanzas.security.models.User
 import com.example.finanzas.vantir.models.VanData
 
@@ -14,8 +15,11 @@ object StateManager {
     var addClientButtonActivated: Boolean = false
     lateinit var selectedClient: Client
     lateinit var generatedPaymentPlan: SavePaymentPlanResource
+    lateinit var periods: List<SavePeriodResource>
     //var netFlowQuantity: Int = -1
     lateinit var vanData: VanData
     var vanResult: Double = -1.0
     var tirResult: Double = -1.0
+    var paymentFromBack = false
+    var paymentFromBackId = 0
 }

@@ -5,4 +5,4 @@ class SaveClientResource (
     var lastName: String,
     var dni: String,
     var userId: Int
-        )
+)

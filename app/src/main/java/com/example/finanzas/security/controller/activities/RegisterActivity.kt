@@ -2,6 +2,7 @@ package com.example.finanzas.security.controller.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -57,6 +58,7 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<RegisterUpdateResponse>, t: Throwable) {
+                Log.d("FAILURE", t.message.toString())
                 Toast.makeText(this@RegisterActivity, "Error al registrar usuario: ${t.message}", Toast.LENGTH_LONG).show()
             }
 

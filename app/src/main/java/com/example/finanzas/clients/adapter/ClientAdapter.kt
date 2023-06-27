@@ -1,47 +1,59 @@
 package com.example.finanzas.clients.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.finanzas.R
 import com.example.finanzas.clients.models.Client
+import com.example.finanzas.databinding.PrototypeClientBinding
 import com.example.finanzas.shared.OnItemClickListener
+import com.example.finanzas.shared.StateManager
 
-class ClientAdapter(private val clients: List<Client>, private val context: Context, private val buttonActivated: Boolean, private val onItemClickListener: OnItemClickListener<Client>)
+class ClientAdapter(
+    private val clients: ArrayList<Client>,
+    private val buttonActivated: Boolean,
+    private val onItemClickListener: OnItemClickListener<Client>? =null,
+    private val onClientDeleteListener: OnClientDeleteListener? = null
+)
     :RecyclerView.Adapter<ClientAdapter.Prototype>(){
-    class Prototype(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private val tvClientName = itemView.findViewById<TextView>(R.id.tvClientName)
-        private val tvClientDNI = itemView.findViewById<TextView>(R.id.tvClientDNI)
-        private val btnGoFrench = itemView.findViewById<ImageButton>(R.id.btnGoFrench)
 
-        fun bind(client: Client, buttonActivated: Boolean, context: Context, onItemClickListener: OnItemClickListener<Client>) {
-            tvClientName.text = "${client.name} ${client.lastName}"
-            tvClientDNI.text = "DNI: ${client.dni}"
+    interface OnClientDeleteListener {
+        fun onClientDeleted(client: Client, position: Int)
+    }
+
+    inner class Prototype(private val binding: PrototypeClientBinding): RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(client: Client, position: Int) {
+            binding.tvClientName.text = "${client.name} ${client.lastName}"
+            binding.tvClientDNI.text = "DNI: ${client.dni}"
+
+            if(StateManager.frenchButtonActivated || !buttonActivated)
+                binding.ibDeleteClient.visibility = View.GONE
+            else binding.ibDeleteClient.visibility = View.VISIBLE
             if (!buttonActivated)
-                btnGoFrench.visibility = View.INVISIBLE
-            else btnGoFrench.setOnClickListener {
-                onItemClickListener.onItemClicked(client)
+                binding.btnGoFrench.visibility = View.INVISIBLE
+            else binding.btnGoFrench.setOnClickListener {
+                onItemClickListener?.onItemClicked(client)
+            }
+
+            binding.ibDeleteClient.setOnClickListener {
+                onClientDeleteListener?.onClientDeleted(client, position)
             }
         }
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientAdapter.Prototype {
-        val view = LayoutInflater
-            .from(parent.context)
-            .inflate(R.layout.prototype_client, parent, false)
-        return Prototype(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Prototype {
+
+        return Prototype(
+            PrototypeClientBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun onBindViewHolder(holder: ClientAdapter.Prototype, position: Int) {
-        holder.bind(clients[position], buttonActivated, context, onItemClickListener)
-    }
-
-    override fun getItemCount(): Int {
-        return clients.size
-    }
+    override fun onBindViewHolder(holder: Prototype, position: Int) = holder.bind(clients[position], position)
+    override fun getItemCount(): Int = clients.size
 }
