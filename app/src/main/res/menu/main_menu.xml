@@ -9,7 +9,7 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/itemLogOut"
-        android:icon="@drawable/baseline_close_24"
+        android:icon="@drawable/baseline_logout_24"
         android:title="Cerrar sesión"
         app:showAsAction="ifRoom" />
 </menu>

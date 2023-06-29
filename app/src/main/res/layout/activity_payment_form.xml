@@ -136,7 +136,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="15dp"
                 android:ems="10"
-                android:hint="Precio del inmueble (entre 65200 y 464200)"
+                android:hint="Precio del inmueble"
                 android:inputType="numberDecimal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
