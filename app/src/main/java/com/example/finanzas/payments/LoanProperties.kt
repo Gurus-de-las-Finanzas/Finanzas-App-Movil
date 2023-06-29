@@ -10,7 +10,8 @@ object LoanProperties {
     const val minPrice = 65200
     const val maxPrice = 464200
     const val minYears = 5
-    const val rate = 0.1399
+    private const val rate = 0.1399
+    const val propertyInsurance = 0.00029
 
     object GoodPayerBonus {
         private val firstRange = Triple(minPrice, 93100, 25700.0)

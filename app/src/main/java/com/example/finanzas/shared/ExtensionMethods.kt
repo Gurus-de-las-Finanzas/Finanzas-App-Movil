@@ -31,10 +31,10 @@ object ExtensionMethods {
 
     fun Double.toPercentage() = this * 100
 
-    fun Double.calculateFee(rate: Double, maxPeriod: Int, currentPeriod: Int, lienRate: Double = 0.0): Double {
-        val plusRate = 1 + rate + lienRate
+    fun Double.calculateFee(rate: Double, maxPeriod: Int, currentPeriod: Int): Double {
+        val plusRate = 1 + rate
         val pow = maxPeriod - currentPeriod + 1
-        return this * (((rate + lienRate) * plusRate.pow(pow))/(plusRate.pow(pow) - 1))
+        return this * (((rate) * plusRate.pow(pow))/(plusRate.pow(pow) - 1))
     }
 
     fun Coin.toChar() = name.first()
@@ -141,6 +141,7 @@ object ExtensionMethods {
     )
 
     fun Char.getCoin() = if(this == Coin.DOLLAR.toChar()) "Dolares" else "Soles"
+    fun Char.toCoin() = if(this == Coin.DOLLAR.toChar()) Coin.DOLLAR else if(this == Coin.SOLES.toChar()) Coin.SOLES else Coin.NONE
     fun Char.getRate() = if (this == TypeRate.EFFECTIVE.toChar()) "Efectiva" else "Nominal"
 
     fun Char.getGracePeriod() = if(this == GracePeriod.PARTIAL.toChar()) "Parcial" else "Total"

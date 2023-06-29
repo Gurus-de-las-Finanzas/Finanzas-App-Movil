@@ -28,12 +28,14 @@ import com.example.finanzas.shared.AppPreferences.Companion.preferences
 import com.example.finanzas.shared.ExtensionMethods.firstName
 import com.example.finanzas.shared.ExtensionMethods.getCoin
 import com.example.finanzas.shared.ExtensionMethods.getGracePeriod
+import com.example.finanzas.shared.ExtensionMethods.getLoanRate
 import com.example.finanzas.shared.ExtensionMethods.getRate
 import com.example.finanzas.shared.ExtensionMethods.isEven
 import com.example.finanzas.shared.ExtensionMethods.putPercent
 import com.example.finanzas.shared.ExtensionMethods.round
 import com.example.finanzas.shared.ExtensionMethods.showShortToast
 import com.example.finanzas.shared.ExtensionMethods.startActivityAndClean
+import com.example.finanzas.shared.ExtensionMethods.toCoin
 import com.example.finanzas.shared.ExtensionMethods.toDP
 import com.example.finanzas.shared.ExtensionMethods.toPercentage
 import com.example.finanzas.shared.SharedMethods
@@ -185,10 +187,10 @@ class PaymentPlanActivity : AppCompatActivity() {
                 textView.setTextColor(getColor(R.color.number_row))
                 if (index == 2)
                     textView.setTextColor(getColor(R.color.interest))
-                if (index == 5)
+                if (index == 6)
                     textView.setTextColor(Color.RED)
 
-                if(s.toDoubleOrNull() == 0.0 && index == 6)
+                if(s.toDoubleOrNull() == 0.0 && index == 7)
                     textView.setBackgroundColor(Color.GREEN)
 
                 if(hasGracePeriod) {
@@ -211,7 +213,7 @@ class PaymentPlanActivity : AppCompatActivity() {
         val paymentPlan = StateManager.generatedPaymentPlan
 
         binding.tvModality.text = getString(R.string.modality).format(paymentPlan.modality)
-        binding.tvRate.text = getString(R.string.rate).format(paymentPlan.typeRate.getRate(), paymentPlan.interestRate.toPercentage()).putPercent()
+        binding.tvRate.text = getString(R.string.rate).format(paymentPlan.typeRate.getRate(), paymentPlan.loan.getLoanRate(paymentPlan.coin.toCoin()).toPercentage()).putPercent()
         binding.tvPropertyCost.text = getString(R.string.property_cost).format(paymentPlan.propertyCost)
         binding.tvPlanLoan.text = getString(R.string.loan).format(paymentPlan.loan)
         binding.tvInitialFee.text = getString(R.string.initial_fee).format(paymentPlan.initialFeePercent.toPercentage()).putPercent()
@@ -232,6 +234,7 @@ class PaymentPlanActivity : AppCompatActivity() {
                 item.initialBalance.round(2).toString(),
                 item.interest.round(2).toString(),
                 item.lienInsurance.round(2).toString(),
+                item.propertyInsurance.round(2).toString(),
                 item.fee.round(2).toString(),
                 item.amortization.round(2).toString(),
                 item.finalBalance.round(2).toString()

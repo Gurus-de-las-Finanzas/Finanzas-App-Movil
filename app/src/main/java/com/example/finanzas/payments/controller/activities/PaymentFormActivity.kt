@@ -2,7 +2,6 @@ package com.example.finanzas.payments.controller.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -186,7 +185,7 @@ class PaymentFormActivity : AppCompatActivity() {
         val periodQuantity = term * 12
         //val periodQuantity = 8
 
-        val rate = when(selectedRate) {
+        var rate = when(selectedRate) {
             //en los dos es efectiva por ahora
             TypeRate.NOMINAL -> loan.getLoanRate(coin)
             TypeRate.EFFECTIVE -> loan.getLoanRate(coin)
@@ -199,6 +198,7 @@ class PaymentFormActivity : AppCompatActivity() {
         var finalBalance: Double
         var finalFee: Double
         var lien: Double
+        var insurance: Double
 
         val effectiveRate = rate.convertEffectiveRate(30)
         val lienRate = lienType.getRate()
@@ -209,12 +209,13 @@ class PaymentFormActivity : AppCompatActivity() {
             initialBalance = if (i == 0) loan else periods[i - 1].finalBalance
             interest = initialBalance * effectiveRate
             lien = initialBalance * lienRate
-            fee = initialBalance.calculateFee(effectiveRate, periodQuantity, i + 1, lienRate)
-            amortization = if (isInGraceMonth) 0.0 else fee - interest - lien
+            insurance = initialBalance * LoanProperties.propertyInsurance
+            fee = initialBalance.calculateFee(effectiveRate + lienRate + LoanProperties.propertyInsurance, periodQuantity, i + 1)
+            amortization = if (isInGraceMonth) 0.0 else fee - interest - lien - insurance
             completeLian += lien
             if (isInGraceMonth) {
-                finalBalance = if(gracePeriod == GracePeriod.TOTAL) initialBalance + interest + lien else initialBalance
-                finalFee = if(gracePeriod == GracePeriod.PARTIAL) interest + lien else 0.0
+                finalBalance = if(gracePeriod == GracePeriod.TOTAL) initialBalance + interest + lien + insurance else initialBalance
+                finalFee = if(gracePeriod == GracePeriod.PARTIAL) interest + lien + insurance else 0.0
             }
             else {
                 finalBalance = initialBalance - amortization
@@ -228,13 +229,15 @@ class PaymentFormActivity : AppCompatActivity() {
                 fee =  finalFee,
                 finalBalance = finalBalance,
                 lienInsurance = lien,
-                propertyInsurance = 0.0,
+                propertyInsurance = insurance,
                 scheduleId = 0
             ))
         }
 
         val sustainableBonus = if(coin.isWhat(Coin.DOLLAR)) LoanProperties.GoodPayerBonus.sustainableBonus.convertCoin(
             Coin.DOLLAR) else LoanProperties.GoodPayerBonus.sustainableBonus
+
+        rate += lienRate.convertEffectiveRate(360, 30) + LoanProperties.propertyInsurance.convertEffectiveRate(360, 30)
 
         StateManager.generatedPaymentPlan =
             SavePaymentPlanResource(
